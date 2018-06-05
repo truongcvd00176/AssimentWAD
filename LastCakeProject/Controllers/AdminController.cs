@@ -160,31 +160,70 @@ namespace LastCakeProject.Controllers
             {
                 return HttpNotFound();
             }
+            if(order.status == 0)
+            {
+                order.status = 1;
+            }
+            if (order.status == 1)
+            {
+                order.status = 0;
+            }
+          
+            db.SaveChanges();
+            return RedirectToAction("ViewAllOrder");
+
+        }
+
+        public ActionResult DeleteOrder(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
             return View(order);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("DeleteOrder")]
         [ValidateAntiForgeryToken]
-        public ActionResult EditOrder([Bind(Include = "orderId, customerId, customerAddress, customerName, customerPhone, employeeId, totalPrice, status, crateAt")] Order order)
+        public ActionResult DeleteOrder(int id)
         {
             try
             {
-                // TODO: Add update logic here
-                if (ModelState.IsValid)
-                {
-
-                    db.Entry(order).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return RedirectToAction("Index");
+                // TODO: Add delete logic here
+                Order order = db.Orders.Find(id);
+                db.Orders.Remove(order);
+                db.SaveChanges();
+                return RedirectToAction("ViewAllOrder");
             }
             catch
             {
-                return View(order);
+                return View();
             }
         }
 
+        public ActionResult ViewOrderDetail(int id)
+        {
+            try
+            {
+                int orderId = id;
+                List<OrderDetail> list = new List<OrderDetail>();
+                var Querry = from od in db.OrderDetails
+                             where od.orderId == orderId
+                             select od;
+                list.AddRange(Querry);
+                return View(list);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        
 
     }
 }
