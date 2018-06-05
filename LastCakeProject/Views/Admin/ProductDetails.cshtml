@@ -1,0 +1,52 @@
+﻿@model LastCakeProject.Models.Product
+
+@{
+    ViewBag.Title = "ProductDetails";
+}
+
+<h2>ProductDetails</h2>
+
+<div class="col-md-4">
+    <img src="@Html.DisplayFor(model => model.productImage)" alt="Alternate Text" width="100%" />
+</div>
+<div class="col-md-8" style="margin-top: -20px;">
+    <h1>
+        <strong style="color: #702e16">
+            @Html.DisplayFor(model => model.productName)
+        </strong>
+    </h1>
+    <h5>
+        <p style="color: #8e8e81">
+            @Html.DisplayFor(model => model.createAt)
+        </p>
+    </h5>
+    <h4>
+        <strong>
+            @Html.DisplayNameFor(model => model.productPrice)
+        </strong>
+
+        <p>
+            @Html.DisplayFor(model => model.productPrice) VNĐ
+        </p>
+    </h4>
+    <h4>
+        <strong>
+            @Html.DisplayNameFor(model => model.productDescription)
+        </strong>
+    </h4>
+    <h4>
+        <p>
+            @Html.DisplayFor(model => model.productDescription)
+        </p>
+    </h4>
+
+
+
+</div>
+
+
+<p>
+    @Html.ActionLink("Sửa", "EditProduct", new { id = Model.productId }) |
+    @Html.ActionLink("Trở về danh sách sản phẩm", "ViewProduct")
+
+</p>

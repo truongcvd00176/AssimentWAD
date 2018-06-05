@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Chức năng Admin</h2>
+<div class="col-md-8 col-md-offset-2">
+    <h3 class="text-danger">Quản lý sản phẩm</h3>
+    <button class="col-md-5 btn btn-default">
+        <h4>@Html.ActionLink("Xem danh sách sản phẩm", "ViewProduct")</h4> 
+    </button>
+    <button class="col-md-5 col-md-offset-2 btn btn-default">
+        <h4> @Html.ActionLink("Thêm mới sản phẩm", "CreateProduct")</h4>
+    </button>
+    <hr/>
+    <h3 class="text-danger">Quản lý nhân sự</h3>
+    <button class="col-md-5 btn btn-default">
+        <h4>@Html.ActionLink("Xem danh sách nhân viên", "ViewEmployee")</h4>
+    </button>
+    <button class="col-md-5 col-md-offset-2 btn btn-default">
+        <h4>  @Html.ActionLink("Thêm mới nhân viên", "CreateEmployee")</h4>
+    </button>
+    <hr/>
+    <h3 class="text-danger">Quản lý đơn hàng</h3>
+    <button class="col-md-5 btn btn-default">
+        <h4>  @Html.ActionLink("Xem danh sách tất cả đơn hàng", "ViewAllOrder")</h4>
+    </button>
+    <button class="col-md-5 col-md-offset-2 btn btn-default">
+        <h4>  @Html.ActionLink("Các đơn hàng đang chờ xử lý", "ViewOrderWait")</h4>
+    </button>
+    <hr/>
+
+    <h3 class="text-danger">Quản lý khách hàng</h3>
+    <button class="col-md-5 btn btn-default">
+        <h4> @Html.ActionLink("Xem danh sách khách hàng", "ViewCustomer")</h4>
+    </button>
+    <button class="col-md-5 col-md-offset-2 btn btn-default">
+        <h4>   @Html.ActionLink("Thêm mới khách hàng", "CreateCustomer")</h4>
+    </button>
+</div>
+

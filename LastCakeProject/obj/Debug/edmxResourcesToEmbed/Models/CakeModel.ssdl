@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CakeMakerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="customerId" />
+    </Key>
+    <Property Name="customerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="customerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="customerAddress" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="customerPhone" Type="int" Nullable="false" />
+    <Property Name="customerEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="createAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="employeeId" />
+    </Key>
+    <Property Name="employeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="employeeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="employeePhone" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="employeeEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="employeeAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="createAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerId" Type="int" Nullable="false" />
+    <Property Name="customerAddress" Type="varchar" MaxLength="100" />
+    <Property Name="customerName" Type="varchar" MaxLength="100" />
+    <Property Name="customerPhone" Type="int" Nullable="false" />
+    <Property Name="employeeId" Type="int" />
+    <Property Name="totalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="createAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="oroderDetailId" />
+    </Key>
+    <Property Name="oroderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderId" Type="int" Nullable="false" />
+    <Property Name="productId" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="productImage" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="productDescription" Type="varchar" MaxLength="1000" />
+    <Property Name="productPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="createAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Order_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="customerId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="employeeId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="employeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="orderId" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="orderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CakeMakerModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Product" Association="Self.FK_OrderDetail_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

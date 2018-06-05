@@ -1,0 +1,161 @@
+﻿@model IEnumerable<LastCakeProject.Models.Product>
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<h2 style="color: #702e16">Chi tiết sản phẩm</h2>
+<hr />
+@{
+    int k = 0;
+}
+
+@foreach (var item1 in Model)
+{
+    k++;
+    if (k == 8)
+    {
+        <div class="col-md-9" style="border: 1px solid #702e16;">
+            <br />
+            <div class="col-md-6">
+                <img src="@Html.DisplayFor(modelItem => item1.productImage)" alt="Alternate Text" width="100%" />
+            </div>
+            <div class="col-md-6" style="margin-top: -20px;">
+                <h1>
+                    <strong style="color: #702e16">
+                        @Html.ActionLink(item1.productName, "ProductDetail", new { id = item1.productId })
+                    </strong>
+                </h1>
+
+
+                <h5>
+                    <p style="color: #8e8e81">
+                        @Html.DisplayFor(modelItem => item1.createAt)
+                    </p>
+                </h5>
+                <h4>
+                    <strong style="color: #702e16">
+                        @Html.DisplayNameFor(model => model.productPrice)
+                    </strong>
+                </h4>
+                <h4>
+                    <p style="color: #702e16; float: right">
+                        @Html.DisplayFor(modelItem => item1.productPrice) VNĐ
+                    </p>
+                </h4>
+                <br />
+                <h4>
+                    <strong style="color: #702e16">
+                        Số người đã mua
+                    </strong>
+                </h4>
+                <h4>
+                    <p style="color: #702e16; float: right">
+                        241 Người
+                    </p>
+                </h4>
+                <br />
+                <h4>
+                    <strong style="color: #702e16">
+                        Đánh giá
+                    </strong>
+                </h4>
+                <h5>
+
+                    <div style="color: #702e16; float: right; col-md-6;">
+                        <span class="glyphicon glyphicon-star" style="color: #702e16;"></span>
+                        <span class="glyphicon glyphicon-star" style="color: #702e16;"></span>
+                        <span class="glyphicon glyphicon-star" style="color: #702e16;"></span>
+                        <span class="glyphicon glyphicon-star" style="color: #702e16;"></span>
+                        <span class="glyphicon glyphicon-star-empty" style="color: #702e16;"></span>
+                    </div>
+                </h5>
+                <br />
+                <h4>
+                    <strong style="color: #702e16">
+                        Đặt hàng bằng
+                    </strong>
+                </h4>
+
+                <button class="btn btn-default col-md-6" style="margin-bottom:5px">
+                    @Html.ActionLink("Đăng nhập", "Index")
+                </button>
+
+                <button class="btn btn-default col-md-6" style="margin-bottom:5px">
+
+                    @Html.ActionLink("Đăng Kí", "Index")
+                </button>
+
+                <button class="btn btn-default col-md-12">
+
+                    @Html.ActionLink("Mua không cần đăng nhập", "AddOder", new { id = item1.productId })
+                </button>
+            </div>
+
+            <div class="col-md-12" style="color: #702e16">
+                <hr />
+                <h4>
+                    <strong>
+                        @Html.DisplayNameFor(model => model.productDescription)
+                    </strong>
+                </h4>
+                <h4>
+                    <p>
+                        @Html.DisplayFor(modelItem => item1.productDescription)
+                    </p>
+                </h4>
+            </div>
+        </div>
+
+    }
+}
+        <div class="col-md-3" >
+            <div class="col-md-12" style="border: 1px solid #702e16;float:right; padding-bottom:10px">
+                <table style=" float:right">
+                    <tr><h3 class="text-center">Sản Phẩm Mới</h3></tr>
+                    @{
+                        int i = 0;
+                    }
+
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        if (i < 8)
+                        {
+                          
+                            <tr>
+                                <div class="row"  style="border-top: 1px solid #702e16" >
+                                    <br />
+                                    <div class="col-md-5">
+                                        <img src="@Html.DisplayFor(modelItem =>item.productImage)" alt="Alternate Text" width="100%" style="padding-bottom:10px" />
+                                    </div>
+                                    <div class="col-md-7">
+                                        <h4>
+                                            <strong style="color: #702e16">
+                                                @Html.ActionLink(item.productName, "ProductDetail", new { id = item.productId })
+                                            </strong>
+                                        </h4>
+                                        <h5>
+                                            <p style="color: #702e16; float: right">
+                                                @Html.DisplayFor(modelItem => item.productPrice) VNĐ
+                                            </p>
+                                        </h5>
+                                        <br />
+                                    </div>
+
+                                </div>
+
+                            </tr>
+
+
+                        }
+
+                    }
+                </table>
+            </div>
+
+        </div>
+
+
+
+
+

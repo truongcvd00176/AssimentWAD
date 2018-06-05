@@ -1,0 +1,55 @@
+﻿@model LastCakeProject.Models.OrderDetail
+
+@{
+    ViewBag.Title = "ViewOrderDetail";
+}
+
+<h2>ViewOrderDetail</h2>
+
+<div>
+    <h4>OrderDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.productId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productId)
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oroderDetailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oroderDetailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.productName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.productName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.oroderDetailId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<LastCakeProject.Models.Order>
+
+@{
+    ViewBag.Title = "ViewAllOrder";
+}
+
+<h2>ViewAllOrder</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customerAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customerPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.username)
+        </td>
+        <td>
+            @Html.ActionLink("Cập nhật", "EditOrder", new { id=item.orderId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.orderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.orderId })
+        </td>
+    </tr>
+}
+
+</table>

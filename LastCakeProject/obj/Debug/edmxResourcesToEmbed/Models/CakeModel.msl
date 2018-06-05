@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CakeMakerModelStoreContainer" CdmEntityContainer="CakeContext">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="CakeMakerModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="customerName" ColumnName="customerName" />
+          <ScalarProperty Name="customerAddress" ColumnName="customerAddress" />
+          <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+          <ScalarProperty Name="customerEmail" ColumnName="customerEmail" />
+          <ScalarProperty Name="createAt" ColumnName="createAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="CakeMakerModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="employeeName" ColumnName="employeeName" />
+          <ScalarProperty Name="employeePhone" ColumnName="employeePhone" />
+          <ScalarProperty Name="employeeEmail" ColumnName="employeeEmail" />
+          <ScalarProperty Name="employeeAddress" ColumnName="employeeAddress" />
+          <ScalarProperty Name="createAt" ColumnName="createAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="CakeMakerModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+          <ScalarProperty Name="customerName" ColumnName="customerName" />
+          <ScalarProperty Name="customerAddress" ColumnName="customerAddress" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createAt" ColumnName="createAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="CakeMakerModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="oroderDetailId" ColumnName="oroderDetailId" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="CakeMakerModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="productDescription" ColumnName="productDescription" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="productImage" ColumnName="productImage" />
+          <ScalarProperty Name="productPrice" ColumnName="productPrice" />
+          <ScalarProperty Name="createAt" ColumnName="createAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

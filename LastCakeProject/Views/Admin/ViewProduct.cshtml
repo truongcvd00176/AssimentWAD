@@ -1,0 +1,66 @@
+﻿@model IEnumerable<LastCakeProject.Models.Product>
+
+@{
+    ViewBag.Title = "ViewProduct";
+}
+
+<h2>ViewProduct</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateProduct")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.productImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createAt)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.productImage)" alt="Alternate Text" width="100px" height="100px" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productPrice)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.productDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createAt)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "EditProduct", new { id = item.productId })
+        </td>
+        <td>
+            @Html.ActionLink("Chi tiết", "ProductDetails", new { id = item.productId })
+        </td>
+        <td>
+            @Html.ActionLink("Xóa", "DeleteProduct", new { id = item.productId })
+        </td>
+    </tr>
+}
+
+</table>
